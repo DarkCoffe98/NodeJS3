@@ -1,14 +1,15 @@
-# Use the official Docker images
-# https://registry.hub.docker.com/_/node/
-#
-FROM node:9.3.0-stretch
+FROM node:alpine
+WORKDIR /src/app
 
-RUN apt-get update
+COPY package.json .
+RUN npm install
 
-RUN apt-get install -y python3-pip python3-dev
+COPY . .
+#first dot- everything in local directory
+#second dot - virtual WORKDIR
 
-RUN pip3 install --upgrade cffi
-RUN pip3 install httpbin gunicorn
+EXPOSE 3000
+CMD ["npm", "start"]
 
-
-RUN npm install crawler -g
+# docker build -t tripadvisorbooking .
+# docker run -it -p 3000:3000 tripadvisorbooking

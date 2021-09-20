@@ -1,8 +1,4 @@
 node_modules
-.DS_Store
-.idea/
-npm-debug.log
-.vscode/
-*~
+client/dist/bundle.js
+db/config.js
 coverage
-.nyc_*
